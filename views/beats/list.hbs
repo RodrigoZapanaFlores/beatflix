@@ -1,0 +1,22 @@
+<a href="/beats/new" class="btn btn-secondary">New Beat</a>
+<hr/>
+
+<form>
+    <input type="text" class="form-control" name="author" placeholder="Search..."/>
+</form>
+
+<div class="row">
+    {{#each beats as |beat|}}
+        <div class="col-3">
+            <div class="card mb-4">
+                <img src="{{beat.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{beat.title}}</h5>
+                    <p class="card-text">{{beat.description}}</p>
+                    <p class="card-text">@{{beat.author}}</p>
+                    <a href="beats/{{beat.id}}" class="btn btn-primary">See detail</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
