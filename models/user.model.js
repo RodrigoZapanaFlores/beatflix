@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
@@ -26,24 +27,39 @@ const userSchema = new Schema(
       type: String,
       required: 'User password is required',
       match: [PW_PATTERN, 'Password needs at least 8 chars']
-    }
-  }
-)
+    },
+    admin: {
+      type: Boolean,
+
+    },
+  });
 
 userSchema.pre('save', function (next) {
   if (this.isModified('password')) {
-    bcrypt.hash(this.password, WORK_FACTOR)
-      .then(hash => {
+    bcrypt
+    .hash(this.password, WORK_FACTOR)
+    .then((hash) => {
         this.password = hash;
         next();
       })
-      .catch(error => next(error))
+      .catch((error) => next(error))
+  } else {
+    next();
   }
-})
+});
 
 userSchema.methods.checkPassword = function (passwordToCheck) {
   return bcrypt.compare(passwordToCheck, this.password);
-}
+};
+
+userSchema.virtual('beats', {
+  ref: 'Beat',
+  localField: '_id',
+  foreignField: "author",
+  justOne: false,
+});
+
+
 
 const User = mongoose.model("User", userSchema);
 

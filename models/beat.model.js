@@ -8,6 +8,11 @@ const beatSchema = new Schema(
       required: 'Title is required',
       minLength: [3, 'Title needs at least 3 chars'] 
     },
+    author: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
     description: {
       type: String,
       minLength: [10, 'Description needs at least 3 chars']
@@ -24,11 +29,10 @@ const beatSchema = new Schema(
             return false;
           }
         },
-        message: image => `Invalid URL`
+        message: (image) => `Invalid URL`
       },
-    }
-  }
-)
+    },
+});
 
 beatSchema.pre('validate', function (next) {
   this.image = this.image || undefined;

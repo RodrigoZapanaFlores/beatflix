@@ -2,12 +2,20 @@ const mongoose = require('mongoose');
 const { Beat } = require("../models");
 
 module.exports.list = (req, res, next) => {
-  Beat.find(req.query)
-  .then((beats) => res.render('beats/list', { beats }))
-  .catch((error) => next(error))
+
+  Beat.find()
+  .populate('author')
+  .then((beats) => {
+    res.render('users/detail', { beats });
+  })
+  .catch((error) => next(error));
 };
 
 module.exports.detail = (req, res, next) => {
+  if(!req.user.admin){
+    return res.redirect('/beats')
+  }
+
   Beat.findById(req.params.id)
   .then((beats) => res.render('beats/detail', { beats }))
   .catch((error) => next(error))
@@ -18,9 +26,12 @@ module.exports.new = (req, res, next) => {
 };
 
 module.exports.create = (req, res, next) => {
-  const data = req.body;
+  const beat = {
+    ...req.body,
+    author: req.user.id,
+  };
 
-  Beat.create(data)
+  Beat.create(beat)
     .then((beat) => res.redirect('/beats'))
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {

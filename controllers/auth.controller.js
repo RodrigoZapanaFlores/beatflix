@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { User } = require('../models');
+const { sendRegistrationEmail } = require("../config/mailer.config");
 
 module.exports.register = (req, res, next) => {
   res.render('auth/register')
@@ -8,25 +9,27 @@ module.exports.register = (req, res, next) => {
 module.exports.doRegister = (req, res, next) => {
 
   function renderWithErrors(errors) {
-    res.render('auth/register', {
+    res.status(400).render('auth/register', {
       user: req.body,
-      errors
+      errors,
     });
   }
 
   const { email } = req.body;
   User.findOne({ email })
-    .then(user => {
+    .then((user) => {
       if (user) {
         renderWithErrors({ email: 'Email already exists' })
       } else {
-        return User.create(req.body)
-          .then((user) => res.redirect('/login'))
+        return User.create(req.body).then((user) => {
+          sendRegistrationEmail(user);
+          res.redirect("/login?confirm=true");
+        });
       }
     })
-    .catch(error => {
+    .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        renderWithErrors(error.errors)
+        renderWithErrors(error.errors);
       } else {
         next(error);
       }
@@ -40,28 +43,33 @@ module.exports.login = (req, res, next) => {
 module.exports.doLogin = (req, res, next) => {
 
   function renderInvalidLogin() {
-    res.render('auth/login', {
+    res.status(400).render('auth/login', {
       user: req.body,
       errors: { password: 'Invalid email or password' }
     });
   }
 
   const { email, password } = req.body;
-  User.findOne({ email })
-    .then(user => {
+  User.findOne({ email, confirmed: true })
+    .then((user) => {
       if (!user) {
         renderInvalidLogin();
       } else {
         return user.checkPassword(password)
-          .then(match => {
+          .then((match) => {
             if (match) {
               req.session.userId = user.id;
               res.redirect('/beats');
             } else {
               renderInvalidLogin();
             }
-          })
+          });
       }
     })
-    .catch(error => next(error));
+    .catch((error) => next(error));
 };
+
+module.exports.logout = (req, res, next) => {
+  req.session.destroy();
+  res.redirect('/events');
+}

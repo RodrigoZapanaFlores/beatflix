@@ -1,5 +1,16 @@
 <nav class="navbar bg-light">
   <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">TODO LIST</span>
+    <span class="navbar-brand mb-0 h1">TODO LIST: 
+      
+    {{#if currentUser}}
+    <a href="/beats">beats</a>
+    {{else}}
+    <a href="/login">login</a>
+    {{/if}}
+
+    </span>
+
+       {{currentUser.name}}
+
   </div>
 </nav>

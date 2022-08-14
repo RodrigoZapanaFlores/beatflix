@@ -13,9 +13,15 @@
                 <div class="card-body">
                     <h5 class="card-title">{{beat.title}}</h5>
                     <p class="card-text">{{beat.description}}</p>
-                    <p class="card-text">@{{beat.author}}</p>
+                    <p class="card-text">
+                        <a href="/users/{{beats.author.id}}">
+                            @{{beats.author.name}}
+                        </a>
+                    </p>
+                    {{#if ../currentUser.admin}}
                     <a href="beats/{{beat.id}}" class="btn btn-primary">See detail</a>
-                </div>
+                    {{/if}}
+                </div> 
             </div>
         </div>
     {{/each}}

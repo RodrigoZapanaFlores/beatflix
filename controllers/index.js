@@ -1,5 +1,6 @@
 module.exports = {
-    beats: require("./beat.controller"),
-    auth: require("./auth.controller")
-  }
+    beats: require("./beats.controller"),
+    auth: require("./auth.controller"),
+    users: require("./user.controller"),
+  };
   

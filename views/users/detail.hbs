@@ -1,0 +1,10 @@
+<p>{{ user.name }}</p>
+<p>{{ user.email }}</p>
+
+<hr/>
+
+<ul>
+    {{#each user.beats as |beat|}}
+        <li>{{beat.title}}</li>
+    {{/each}}
+</ul>

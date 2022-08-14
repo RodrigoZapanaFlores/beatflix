@@ -9,12 +9,19 @@ app.set('view engine', 'hbs');
 app.use(logger("dev"));
 app.use(express.static(`${__dirname}/public`));
 app.use(express.urlencoded({ extended: false }));
+
+require('./config/db.config');
+require("./config/hbs.config");
+
 const { session, loadUser } = require('./config/session.config');
 app.use(session);
 app.use(loadUser);
 
-require('./config/db.config');
-require("./config/hbs.config");
+app.use((req, res, next) => {
+  const path = req.path;
+  res.locals.title = path;
+  next();
+});
 
 const routes = require('./config/routes.config')
 app.use('/', routes)
