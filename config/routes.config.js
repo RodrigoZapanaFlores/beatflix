@@ -4,6 +4,9 @@ const { beats, auth, users }= require("../controllers");
 
 const secure = require('../middlewares/secure.mid');
 
+//nuevo
+router.get('/', beats.main)
+//nuevo
 router.get('/beats', secure.isAuthenticated, beats.list);
 router.get("/beats/new", secure.isAuthenticated, beats.new);
 router.get("/beats/:id", secure.isAuthenticated, beats.detail);
@@ -18,6 +21,8 @@ router.post('/login', auth.doLogin);
 
 router.get('/users/:id', secure.isAuthenticated, users.detail);
 router.get("/users/:id/confirm", users.confirm);
+
+
 
 
 module.exports = router;

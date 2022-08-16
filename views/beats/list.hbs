@@ -18,9 +18,13 @@
                             @{{beats.author.name}}
                         </a>
                     </p>
-                    {{#if ../currentUser.admin}}
-                    <a href="beats/{{beat.id}}" class="btn btn-primary">See detail</a>
+                    {{#if ../currentUser}}
+                    <a href="/beats/{{beat.id}}" class="btn btn-primary">&#127911 See detail</a>
+                    <form action="/beats/{{beat.id}}/delete" method="post">
+                    <button class="btn btn-secondary" type="submit">&#128162    Borrar</button>
+                     </form>
                     {{/if}}
+                    
                 </div> 
             </div>
         </div>

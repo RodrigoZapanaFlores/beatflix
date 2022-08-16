@@ -6,10 +6,12 @@ module.exports.list = (req, res, next) => {
   Beat.find()
   .populate('author')
   .then((beats) => {
-    res.render('users/detail', { beats });
+    res.render('beats/list', { beats });
   })
   .catch((error) => next(error));
 };
+
+
 
 module.exports.detail = (req, res, next) => {
   if(!req.user.admin){
@@ -48,3 +50,8 @@ module.exports.delete = (req, res, next) => {
   .then(() => res.redirect('/beats'))
   .catch((error) => next(error))
 };
+
+
+module.exports.main = (req, res, next) => {
+  res.render('beats/main')
+}
