@@ -1,9 +1,12 @@
 <a href="/beats/new" class="btn btn-secondary">New Beat</a>
 <hr/>
 
-<form>
-    <input type="text" class="form-control" name="author" placeholder="Search..."/>
-</form>
+<form action="/beats" method="GET">
+    <div class="input-group mb-3">
+        <span class="input-group-text"><i class="fa fa-tag"></i></span>
+        <input type="text" name="title" value="{{ query.title }}" class="form-control" placeholder="Enter beat title...">
+        <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
+    </div>
 
 <div class="row">
     {{#each beats as |beat|}}
@@ -14,10 +17,12 @@
                     <h5 class="card-title">{{beat.title}}</h5>
                     <p class="card-text">{{beat.description}}</p>
                     <p class="card-text">
-                        <a href="/users/{{beats.author.id}}">
+                        <a href="/users{{beats.author.id}}/detail">
                             @{{beats.author.name}}
                         </a>
                     </p>
+                 
+
                     {{#if ../currentUser}}
                     <a href="/beats/{{beat.id}}" class="btn btn-primary">&#127911 See detail</a>
                     <form action="/beats/{{beat.id}}/delete" method="post">

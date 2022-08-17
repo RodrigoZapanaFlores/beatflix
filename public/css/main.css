@@ -1,4 +1,4 @@
-/* barras de sonidos de main page Inicio */
+/* barras de sonidos de main page Inicio 
 .btns{
     border: #0890ff solid 3px;
     border-radius: 39px;
@@ -157,12 +157,12 @@
           transform: translateX(-50%) translateZ(0) scaleY(1)
       }
   }
-  
+  */
   
   /* barras de sonidos de main page Final */
   
   
-  /* olas en navbar Inicio */
+  /* olas en navbar Inicio 
   .waveWrapper {
       overflow: hidden;
       position: absolute;
@@ -237,11 +237,11 @@
   }
   
   
-  /* olas en navbar Inicio */
+  ----- olas en navbar Inicio */
   
   
   
-  
+ /* 
   @import url('https://fonts.googleapis.com/css?family=Quicksand');
   body{
     background:url('/css/waves.gif') ;
@@ -445,6 +445,8 @@
     animation-delay: 3s, 4.5s;
   }
   /* .: animations :. ====================== */
+
+  /*
   @keyframes neonBlink {
     0% {
       color: rgba(225, 94, 112, 0);
@@ -501,3 +503,5 @@
   width: 30%;
   text-align: left;
   }
+
+  */

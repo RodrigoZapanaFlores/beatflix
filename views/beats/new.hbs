@@ -20,19 +20,24 @@
     {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
   </div>
 
-  <button type="submit" >
+
+  <div class="custom-file mb-3">
+    <input type="text" name="file" value="{{ beat.file }}" class="form-control {{#if errors.file }}is-invalid{{/if}}" class="custom-file-input"
+      placeholder="Enter beat archibo " />
+    {{#if errors.file }}<div class="invalid-feedback">{{ errors.file }}</div>{{/if}}
+  <label for="file" class="custom-file-label">choose file</label>
+
+  </div>
+
+
+
+
+
+  <button type="submit" value="Submit" class="btn btn-primary btn-block" >
 <div class="neon">
-    <span class="letter l">N</span>
-    <span class="letter a">E</span>
-    <span class="letter h">W</span>
-    <span class="letter q">-</span>
-    <span class="letter r">B</span>
-    <span class="letter i">E</span>
-    <span class="letter m">A</span>
-    <span class="letter t">T</span>
 </div>
 
-  </button>
+</button>
 </form>
 
 </div>

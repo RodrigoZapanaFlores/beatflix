@@ -32,11 +32,15 @@ const beatSchema = new Schema(
         message: (image) => `Invalid URL`
       },
     },
+
+   
+   
 });
 
 beatSchema.pre('validate', function (next) {
   this.image = this.image || undefined;
   this.description = this.description || undefined;
+
   next();
 });
 
