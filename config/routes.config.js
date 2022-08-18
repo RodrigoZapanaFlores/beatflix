@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const upload = require("../config/multer.config");
 const { beats, auth, users }= require("../controllers");
-
 const secure = require('../middlewares/secure.mid');
 
 //nuevo
@@ -10,7 +10,7 @@ router.get('/', beats.main)
 router.get('/beats', secure.isAuthenticated, beats.list);
 router.get("/beats/new", secure.isAuthenticated, beats.new);
 router.get("/beats/:id", secure.isAuthenticated, beats.detail);
-router.post("/beats", secure.isAuthenticated, beats.create);
+router.post("/beats", secure.isAuthenticated, upload.single('audio'), beats.create);
 router.post("/beats/:id/delete", secure.isAuthenticated, beats.delete);
 
 router.get('/register', auth.register);

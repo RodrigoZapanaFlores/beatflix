@@ -1,5 +1,5 @@
 <div class="form-new-container">
-<form action="/beats" method="POST" class="form-new-beat">
+<form action="/beats" method="POST" enctype="multipart/form-data">
 
   <div class="input-group mb-1">
     <span class="input-group-text"><i class="fa fa-tag fa-fw"></i></span>
@@ -13,21 +13,23 @@
     {{#if errors.description }}<div class="invalid-feedback">{{ errors.description }}</div>{{/if}}
   </div>
 
-  <div class="input-group mb-1">
+  <!-- <div class="input-group mb-1">
     <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
-    <input type="text" name="image" value="{{ beat.image }}" class="form-control {{#if errors.image }}is-invalid{{/if}}"
+    <input type="file" name="image" value="{{ beat.image }}" class="form-control {{#if errors.image }}is-invalid{{/if}}"
       placeholder="Enter beat image url..." />
     {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
   </div>
+  -->
 
-
-  <div class="custom-file mb-3">
-    <input type="text" name="file" value="{{ beat.file }}" class="form-control {{#if errors.file }}is-invalid{{/if}}" class="custom-file-input"
-      placeholder="Enter beat archibo " />
-    {{#if errors.file }}<div class="invalid-feedback">{{ errors.file }}</div>{{/if}}
-  <label for="file" class="custom-file-label">choose file</label>
-
+ <div class="input-group mb-1">
+    <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
+    <input type="file" name="audio" value="{{ beat.audio }}" class="form-control {{#if errors.audio }}is-invalid{{/if}}"
+      placeholder="Enter beat image url..." />
+    {{#if errors.audio }}<div class="invalid-feedback">{{ errors.audio }}</div>{{/if}}
   </div>
+
+
+
 
 
 

@@ -33,6 +33,9 @@ module.exports.create = (req, res, next) => {
     author: req.user.id,
   };
 
+  beat.audio = req.file.path
+  
+
   Beat.create(beat)
     .then((beat) => res.redirect('/beats'))
     .catch((error) => {
