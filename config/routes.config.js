@@ -21,9 +21,13 @@ router.post('/register', auth.doRegister);
 router.get('/login', auth.login);
 router.post('/login', auth.doLogin);
 
-router.post('/logout', auth.logout)
+router.post('/logout', auth.logout);
+
+router.get('/userDetail', secure.isAuthenticated, users.userDetail);
+
 router.get('/users/:id', secure.isAuthenticated, users.userDetail);
 router.get("/users/:id/confirm", users.confirm);
+
 
 
 
