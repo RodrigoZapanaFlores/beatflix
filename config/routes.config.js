@@ -21,13 +21,7 @@ router.post('/register', auth.doRegister);
 router.get('/login', auth.login);
 router.post('/login', auth.doLogin);
 
-router.post('/logout', (req, res, next) => {
-    req.session.destroy(err => {
-      if (err) next(err);
-      res.redirect('/');
-    });
-  });
-
+router.post('/logout', auth.logout)
 router.get('/users/:id', secure.isAuthenticated, users.userDetail);
 router.get("/users/:id/confirm", users.confirm);
 
