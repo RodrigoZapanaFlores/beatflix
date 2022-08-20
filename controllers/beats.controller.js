@@ -1,12 +1,27 @@
 const mongoose = require('mongoose');
 const { Beat } = require("../models");
 
+
 module.exports.list = (req, res, next) => {
 
   Beat.find()
   .populate('author')
   .then((beats) => {
-    res.render('beats/list', { beats });
+    res.render("beats/list", { beats });
+  })
+  .catch((error) => next(error));
+};
+
+
+module.exports.myList = (req, res, next) => {
+
+  Beat.find({
+    ...req.query,
+    author: req.user.id,
+  })
+  .populate('author')
+  .then((beats) => {
+    res.render("beats/myList", { beats });
   })
   .catch((error) => next(error));
 };
@@ -14,9 +29,9 @@ module.exports.list = (req, res, next) => {
 
 
 module.exports.detail = (req, res, next) => {
-  if(!req.user.admin){
+  /**if(!req.user.admin){
     return res.redirect('/beats')
-  }
+  } **/
 
   Beat.findById(req.params.id)
   .then((beats) => res.render('beats/detail', { beats }))
@@ -33,8 +48,12 @@ module.exports.create = (req, res, next) => {
     author: req.user.id,
   };
 
-  beat.audio = req.file.path
-  
+    beat = req.file.path;
+    
+//if(req.file){
+  //beat.audio = req.file.path;
+  //beat.image = req.file.path;
+//}
 
   Beat.create(beat)
     .then((beat) => res.redirect('/beats'))

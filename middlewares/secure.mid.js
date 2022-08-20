@@ -6,10 +6,12 @@ module.exports.isAuthenticated = (req, res, next) => {
     }
 };
 
-module.exports.isAdmin = (req, res, next) => {
+/**module.exports.isAdmin = (req, res, next) => {
     if(req.user.admin) {
         next()
     } else {
         res.redirect('/beats')
     }
 };
+
+*/

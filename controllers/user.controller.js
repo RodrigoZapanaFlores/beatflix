@@ -1,11 +1,11 @@
 const { User, Beat } = require("../models")
 
-module.exports.detail = (req, res, next) => {
+module.exports.userDetail = (req, res, next) => {
     User.findById(req.params.id)
       .populate("beats")
       .then((user) => {
         if (user) {
-          res.render("users/detail", { user });
+          res.render("users/userDetail", { user });
         } else {
           res.redirect("/beats");
         }
@@ -20,3 +20,4 @@ module.exports.detail = (req, res, next) => {
       })
       .catch((err) => next(err));
   };
+
