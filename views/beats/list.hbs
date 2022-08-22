@@ -1,7 +1,8 @@
 
 <form id="formbeats" action="/beats" method="GET">
     <div class="input-group mb-3 inputGroup">
-        <input type="text" name="title" value="{{ query.title }}" class="form-control"  id="searchinput" placeholder="Enter beat title...">
+        <input type="text" name="wordToFind" value="{{ query.wordToFind }}" class="form-control"  id="searchinput" placeholder="Enter word to find...">
+
         <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
     </div>
 </form>

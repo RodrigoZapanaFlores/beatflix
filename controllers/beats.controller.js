@@ -3,13 +3,19 @@ const { Beat } = require("../models");
 
 
 module.exports.list = (req, res, next) => {
-const { title, description ,name} = req.query
-const criterial ={};
+const { wordToFind } = req.query;
+const criterial = {};
+/*const criterial = wordToFind ? { 
+  $or: [
+    {title: { "$regex": wordToFind }},
+    {description: { "$regex": wordToFind }},
+    {name: { "$regex": wordToFind }},
+  ]} : 
+  {};*/
 
-if(title){
-  criterial.title = new RegExp(title, "i");
-}
-
+  if (wordToFind) {
+    criterial.title = new RegExp(wordToFind, 'i');
+  }
 
   Beat.find(criterial)
   .populate('author')
