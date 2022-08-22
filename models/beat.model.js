@@ -17,27 +17,15 @@ const beatSchema = new Schema(
       type: String,
       minLength: [10, 'Description needs at least 3 chars']
     },
-    image: {
-      type: String,
-      default: 'https://loremflickr.com/320/240/brazil',
-      validate: {
-        validator: function(image) {
-          try {
-            new URL(image);
-            return true;
-          } catch (error) {
-            return false;
-          }
-        },
-        message: (image) => `Invalid URL`
-      },
-    },
+
     audio: {
       type: String,
       
     },
    
 });
+
+
 
 beatSchema.pre('validate', function (next) {
   this.image = this.image || undefined;

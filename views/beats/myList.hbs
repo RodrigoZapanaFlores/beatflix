@@ -1,13 +1,13 @@
 <a href="/beats/new" class="btn btn-secondary">New Beat</a>
 <hr/>
 
-<form action="/beats" method="GET">
+<form action="/beats" method="GET"><!--mirar si action engancharlo /mylist-->
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="fa fa-tag"></i></span>
         <input type="text" name="title" value="{{ query.title }}" class="form-control" placeholder="Enter beat title...">
         <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
     </div>
-
+</form>
 <div class="row">
     {{#each beats as |beat|}}
         <div class="col-3">

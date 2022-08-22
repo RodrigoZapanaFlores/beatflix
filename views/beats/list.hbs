@@ -1,12 +1,11 @@
 
 <form id="formbeats" action="/beats" method="GET">
     <div class="input-group mb-3 inputGroup">
-        <span class="input-group-text"><i class="fa fa-tag"></i></span>
         <input type="text" name="title" value="{{ query.title }}" class="form-control"  id="searchinput" placeholder="Enter beat title...">
         <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
     </div>
-
-<div class="row">
+</form>
+    <div class="row">
     {{#each beats as |beat|}}
         <div class="col-3">
             <div class="card mb-4">
@@ -34,4 +33,4 @@
             </div>
         </div>
     {{/each}}
-</div>
+    </div>

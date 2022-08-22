@@ -1,10 +1,17 @@
-const mongoose = require('mongoose');
+const { mongoose } = require('mongoose');
 const { Beat } = require("../models");
 
 
 module.exports.list = (req, res, next) => {
+const { title, description ,name} = req.query
+const criterial ={};
 
-  Beat.find()
+if(title){
+  criterial.title = new RegExp(title, "i");
+}
+
+
+  Beat.find(criterial)
   .populate('author')
   .then((beats) => {
     res.render("beats/list", { beats });

@@ -20,6 +20,7 @@ app.use(loadUser);
 app.use((req, res, next) => {
   const path = req.path;
   res.locals.title = path;
+  res.locals.query = req.query;
   next();
 });
 
