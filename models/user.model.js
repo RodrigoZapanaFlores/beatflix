@@ -27,10 +27,7 @@ const userSchema = new Schema(
       required: 'User password is required',
       match: [PW_PATTERN, 'Password needs at least 8 chars']
     },
-    /** admin: {
-      type: Boolean,
-
-    },*/
+    
   });
 
 userSchema.pre('save', function (next) {

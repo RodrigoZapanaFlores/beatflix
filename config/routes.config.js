@@ -28,7 +28,7 @@ router.post('/logout', (req, res, next) => {
     });
   });
 
-router.get('/users/:id', secure.isAuthenticated, users.userDetail);
+router.get("/users/:id/userDetail", secure.isAuthenticated, users.userDetail);
 router.get("/users/:id/confirm", users.confirm);
 
 
