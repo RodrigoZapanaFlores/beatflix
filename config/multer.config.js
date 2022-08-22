@@ -16,7 +16,7 @@ const storage = new CloudinaryStorage({
         
         allowed_formats: ['jpeg', 'png', 'jpg', 'mp3','wav'],
         folder: 'beatflix',
-        resource_type: 'auto',
+        resource_type: 'video',
     },
 });
 

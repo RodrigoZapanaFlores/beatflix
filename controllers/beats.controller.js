@@ -29,12 +29,9 @@ module.exports.myList = (req, res, next) => {
 
 
 module.exports.detail = (req, res, next) => {
-  /**if(!req.user.admin){
-    return res.redirect('/beats')
-  } **/
-
   Beat.findById(req.params.id)
-  .then((beats) => res.render('beats/detail', { beats }))
+  .populate("author")
+  .then((beat) => res.render("beats/detail", { beat }))
   .catch((error) => next(error))
 };
 
@@ -48,7 +45,7 @@ module.exports.create = (req, res, next) => {
     author: req.user.id,
   };
 
-    beat = req.file.path;
+  beat.audio = req.file.path;
     
 //if(req.file){
   //beat.audio = req.file.path;

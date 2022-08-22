@@ -1,4 +1,3 @@
-const Beat = require("./beat.model")
 const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
@@ -52,13 +51,12 @@ userSchema.methods.checkPassword = function (passwordToCheck) {
   return bcrypt.compare(passwordToCheck, this.password);
 };
 
-  userSchema.virtual("beats", {
-  ref: "Beat",
-  localField: "_id",
+userSchema.virtual('beats', {
+  ref: 'Beat',
+  localField: '_id',
   foreignField: "author",
   justOne: false,
 });
-
 
 
 

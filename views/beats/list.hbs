@@ -1,8 +1,8 @@
 
-<form action="/beats" method="GET">
-    <div class="input-group mb-3">
+<form id="formbeats" action="/beats" method="GET">
+    <div class="input-group mb-3 inputGroup">
         <span class="input-group-text"><i class="fa fa-tag"></i></span>
-        <input type="text" name="title" value="{{ query.title }}" class="form-control" placeholder="Enter beat title...">
+        <input type="text" name="title" value="{{ query.title }}" class="form-control"  id="searchinput" placeholder="Enter beat title...">
         <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
     </div>
 
@@ -10,24 +10,27 @@
     {{#each beats as |beat|}}
         <div class="col-3">
             <div class="card mb-4">
-                 <img src="{{beat.image}}" class="card-img-top" alt="..."> 
+                 <!-- <img src="{{beat.image}}" class="card-img-top" alt="..."> -->
+                 <div class="card-body-container">
                 <div class="card-body">
+
                     <h5 class="card-title">{{beat.title}}</h5>
+                    
                     <p class="card-text">{{beat.description}}</p>
-                    <p class="card-text"><a href="/users/{{beat.author.id}}">go to :{{beat.author.name}}</a></p>
+                    <p class="card-text"><a href="/users/{{beat.author.id}}/detail">@{{beats.author.name}}</a></p>
                     <audio controls muted >
                         <source src={{beat.audio}}>
                     </audio>  
                  
 
                     {{#if ../currentUser}}
-                    <a href="/beats/{{beat.id}}" class="btn btn-primary">&#127911 See detail</a>
+                    <a href="/beats/{{beat.id}}/detail" class="btn btn-primary">&#127911 See detail</a>
                     <form action="/beats/{{beat.id}}/delete" method="post">
                     <button class="btn btn-secondary" type="submit">&#128162    Borrar</button>
                      </form>
                     {{/if}}
                     
-                </div> 
+                </div> </div>
             </div>
         </div>
     {{/each}}
