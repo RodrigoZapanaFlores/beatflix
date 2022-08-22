@@ -27,6 +27,27 @@ const userSchema = new Schema(
       required: 'User password is required',
       match: [PW_PATTERN, 'Password needs at least 8 chars']
     },
+    bio: {
+      type: String,
+      required: 'Biography',
+      trim: true
+    },
+    donate: {
+      type: String,
+      required: 'url paypal',
+      trim: true
+    },
+    social: {
+      type: String,
+      required: 'Biography',
+      trim: true
+    },
+    skills: {
+      type: String,
+      required: 'url skills',
+      trim: true
+    },
+
     
   });
 

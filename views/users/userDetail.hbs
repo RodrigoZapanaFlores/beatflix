@@ -1,10 +1,22 @@
-<p>{{ currentUser.name }}</p>
-<p>{{ currentUser.email }}</p>
+
+<h1>Perfil de usuario</h1>
+
+<p>prod:{{ currentUser.name }}</p>
+<p>contacto: {{ currentUser.email }}</p>
+<p>bio:{{ currentUser.bio}}</p>
+<p><a href="{{currentUser.donate}}">donate link: {{currentUser.donate}} </a></p>
+<p><a href="{{currentUser.social}}"><i class="fa fa-instagram" aria-hidden="true"></i></a></p>
+
+<iframe width="560" height="315" src="{{ currentUser.skills }}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+
 
 <hr/>
 
 <ul>
-    {{#each currentUser.beats as |beat|}}
+    {{#each user.beats as |beat|}}
         <li>{{beat.title}}</li>
     {{/each}}
 </ul>

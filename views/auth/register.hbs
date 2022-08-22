@@ -15,7 +15,33 @@
         <input type="text" name="email" value="{{ user.email }}" class="form-control {{#if errors.email }}is-invalid{{/if}}" placeholder="name@exaple.org">
         {{#if errors.email}}<div class="invalid-feedback">{{ errors.email }}</div>{{/if}}
       </div>
-    
+
+      <div class="input-group mb-1">
+        <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
+        <input type="text" name="bio" value="{{ user.bio }}" class="form-control {{#if errors.bio }}is-invalid{{/if}}" placeholder="Write a biography">
+        {{#if errors.bio}}<div class="invalid-feedback">{{ errors.bio }}</div>{{/if}}
+      </div>
+
+      <div class="input-group mb-1">
+        <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
+        <input type="text" name="donate" value="{{ user.donate }}" class="form-control {{#if errors.donate }}is-invalid{{/if}}" placeholder="url paypal">
+        {{#if errors.donate}}<div class="invalid-feedback">{{ errors.donate }}</div>{{/if}}
+      </div>
+
+      <div class="input-group mb-1">
+        <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
+        <input type="text" name="social" value="{{ user.social }}" class="form-control {{#if errors.social }}is-invalid{{/if}}" placeholder="Networing">
+        {{#if errors.social}}<div class="invalid-feedback">{{ errors.social }}</div>{{/if}}
+      </div>
+
+
+        <div class="input-group mb-1">
+        <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
+        <input type="text" name="skills" value="{{ user.skills }}" class="form-control {{#if errors.skills }}is-invalid{{/if}}" placeholder="url skills">
+        {{#if errors.skills}}<div class="invalid-feedback">{{ errors.skills }}</div>{{/if}}
+      </div>
+
+
       <div class="input-group mb-1">
         <span class="input-group-text"><i class="fa fa-lock fa-fw"></i></span>
         <input type="password" name="password" class="form-control {{#if errors.password }}is-invalid{{/if}}" placeholder="User password">
