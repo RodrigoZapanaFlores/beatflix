@@ -15,7 +15,22 @@ const beatSchema = new Schema(
     },
     description: {
       type: String,
-      minLength: [10, 'Description needs at least 3 chars']
+      minLength: [3, 'Description needs at least 3 chars']
+    },
+    bpms: {
+      type: String,
+      required: 'Title is required',
+      minLength: [3, 'Title needs at least 3 chars'] 
+    },
+    machine: {
+      type: String,
+      required: 'Title is required',
+      minLength: [3, 'Title needs at least 3 chars'] 
+    },
+
+    url: {
+      type: String,
+      required: 'url process is required',
     },
 
     audio: {

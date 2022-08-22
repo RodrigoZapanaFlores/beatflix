@@ -53,11 +53,6 @@ module.exports.create = (req, res, next) => {
   };
 
   beat.audio = req.file.path;
-    
-//if(req.file){
-  //beat.audio = req.file.path;
-  //beat.image = req.file.path;
-//}
 
   Beat.create(beat)
     .then((beat) => res.redirect('/beats'))

@@ -9,16 +9,27 @@
 
   <div class="input-group mb-1">
     <span class="input-group-text"><i class="fa fa-edit fa-fw"></i></span>
-    <textarea class="form-control {{#if errors.description }}is-invalid{{/if}}" name="description" aria-label="Beat description">{{ beat.description}}</textarea>
+    <textarea class="form-control {{#if errors.description }}is-invalid{{/if}}" name="description" aria-label="Beat description" placeholder="Enter the style ..." >{{ beat.description}}</textarea>
     {{#if errors.description }}<div class="invalid-feedback">{{ errors.description }}</div>{{/if}}
   </div>
 
- <!--<div class="input-group mb-1">
+    <div class="input-group mb-1">
     <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
-    <input type="file" name="image" value="{{ beat.image }}" class="form-control {{#if errors.image }}is-invalid{{/if}}"
-      placeholder="Enter beat image url..." />
-    {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
-  </div>-->
+    <input type="text" name="bpms" value="{{ beat.bpms }}" class="form-control {{#if errors.bpms }}is-invalid{{/if}}"
+      placeholder="Enter the bpms" />
+    {{#if errors.bpms }}<div class="invalid-feedback">{{ errors.bpms }}</div>{{/if}}
+ 
+    <div class="input-group mb-1">
+    <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
+    <input type="text" name="machine" value="{{ beat.machine }}" class="form-control {{#if errors.machine }}is-invalid{{/if}}"
+      placeholder="Enter the machine" />
+    {{#if errors.machine }}<div class="invalid-feedback">{{ errors.machine }}</div>{{/if}}
+
+         <div class="input-group mb-1">
+    <span class="input-group-text"><i class="fa fa-picture-o fa-fw"></i></span>
+    <input type="text" name="url" value="{{ beat.url }}" class="form-control {{#if errors.url }}is-invalid{{/if}}"
+      placeholder="Enter the beat process url..." />
+    {{#if errors.url }}<div class="invalid-feedback">{{ errors.url }}</div>{{/if}} 
 
 
  <div class="input-group mb-1">

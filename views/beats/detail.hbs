@@ -1,6 +1,13 @@
-<h1>Awesome Beat</h1>
+<h1>Description</h1>
 
-<p>{{beat.title}}</p>
+<p>Nombre del Beat: {{beat.title}}</p>
+<p>Velocidad: {{beat.bpms}}</p>
+<p>Machine: {{beat.machine}}</p>
+<div>
+<p>Process of production:</p>
+<iframe width="560" height="315" src="{{beat.url}}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</div>
 
 <form action="/beats/{{beat.id}}/delete" method="post">
     <button type="submit">DELETE</button>
