@@ -1,35 +1,27 @@
-<nav class="navbar " id="navbar">
-  <div class="container-fluid " >
-<div class="waveWrapper waveAnimation">
-  <div class="waveWrapperInner bgTop ">
-    <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
-  </div>
-  <div class="waveWrapperInner bgMiddle">
-    <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
-  </div>
-  <div class="waveWrapperInner bgBottom">
-    <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
-  </div>
+
+<div class="hero">
+
+  <nav id="navbar">
+      <h2 class="logo">8<span>BEATS</span></h2>
+      <ul>
+         <li><a  href="/">H0ME</a></li>
+         <li> <span> 
+                  {{#if currentUser}}
+                  <a  href="/beats">BEATS</a>
+                  {{else}}
+                  <a   href="/login">L0GIN</a>
+                  {{/if}}
+              </span>
+          </li>
+          <li><a id="dowloads-btn" href="/beats/myList">MyGAME</a></li>
+          <li><a href="/users/{{currentUser.id}}/userDetail">PLAYER: {{currentUser.name}}</a></li>
+          <li><form id="logout" action="/logout" method="POST">
+                  <button>L0G0UT</button>
+              </form>
+          </li>
+        </ul>   
+    </nav>
 </div>
 
-    <span class="navbar-brand mb-0 h1 z-index">
-      
-    {{#if currentUser}}
-    <a class="btns" href="/beats">Beats</a>
-    {{else}}
-    <a  class="btns" href="/login">Login</a>
-    {{/if}}
-    </span>
-    <a class="btns z-index" href="/">Main Page</a>
 
-    <form id="logout-form" action="/logout" method="POST">
-    <button>Logout</button>
-  </form>
 
-{{!--   nuevo    --}}
-      <a id="dowloads-btn" class="z-index btns" href="/beats/myList">MyList</a> 
-{{!--   nuevo    --}}
-      <a href="/users/{{currentUser.id}}/userDetail">Usuario : {{currentUser.name}}</a>  
-
-  </div>
-</nav>

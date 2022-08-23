@@ -1,60 +1,70 @@
 <div class="row justify-content-center">
-  <div class="col-12 col-md-6 col-lg-4">
-    <h2>Register</h2>
+    <div class="col-12 col-md-6 col-lg-4">
+      <h2>Register:</h2>
 
-    <form action="/register" method="post">
-    
-      <div class="input-group mb-1">
-        <span class="input-group-text"><i class="fa fa-user fa-fw"></i></span>
-        <input type="text" name="name" value="{{ user.name }}" class="form-control {{#if errors.name }}is-invalid{{/if}}" placeholder="User name">
-        {{#if errors.name}}<div class="invalid-feedback">{{ errors.name }}</div>{{/if}}
-      </div>
-    
-      <div class="input-group mb-1">
-        <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
-        <input type="text" name="email" value="{{ user.email }}" class="form-control {{#if errors.email }}is-invalid{{/if}}" placeholder="name@exaple.org">
-        {{#if errors.email}}<div class="invalid-feedback">{{ errors.email }}</div>{{/if}}
-      </div>
+        <label for="">
+          <form action="/register" method="post">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">@</span>
+                  <input type="text" name="name" value="{{ user.name }}" class="form-control {{#if errors.name }}is-invalid{{/if}}" placeholder="UserName">
+                        {{#if errors.name}}<div class="invalid-feedback">{{ errors.name }}</div>{{/if}}
+                </div>
 
-      <div class="input-group mb-1">
-        <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
-        <input type="text" name="bio" value="{{ user.bio }}" class="form-control {{#if errors.bio }}is-invalid{{/if}}" placeholder="Write a biography">
-        {{#if errors.bio}}<div class="invalid-feedback">{{ errors.bio }}</div>{{/if}}
-      </div>
+                <div class="input-group mb-3">
+                  <input type="text" name="email" value="{{ user.email }}" class="form-control {{#if errors.email }}is-invalid{{/if}}" placeholder="Email...">
+                        {{#if errors.email}}<div class="invalid-feedback">{{ errors.email }}</div>{{/if}}
+                  <span class="input-group-text" id="basic-addon2">@example.com</span>
+                </div>
 
-      <div class="input-group mb-1">
-        <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
-        <input type="text" name="donate" value="{{ user.donate }}" class="form-control {{#if errors.donate }}is-invalid{{/if}}" placeholder="url paypal">
-        {{#if errors.donate}}<div class="invalid-feedback">{{ errors.donate }}</div>{{/if}}
-      </div>
+                <label for="basic-url" class="form-label">Skills:</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon3">https://youtube.com/</span>
+                  <input type="text" name="skills" value="{{ user.skills }}" class="form-control {{#if errors.skills }}is-invalid{{/if}}" placeholder="URL">
+                        {{#if errors.skills}}<div class="invalid-feedback">{{ errors.skills }}</div>{{/if}}
+                </div>
 
-      <div class="input-group mb-1">
-        <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
-        <input type="text" name="social" value="{{ user.social }}" class="form-control {{#if errors.social }}is-invalid{{/if}}" placeholder="Networing">
-        {{#if errors.social}}<div class="invalid-feedback">{{ errors.social }}</div>{{/if}}
-      </div>
+                <label for="basic-url" class="form-label">Donation:</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon3">https://paypal.com/</span>
+                  <input type="text" name="donate" value="{{ user.donate }}" class="form-control {{#if errors.donate }}is-invalid{{/if}}" placeholder="URL">
+                        {{#if errors.donate}}<div class="invalid-feedback">{{ errors.donate }}</div>{{/if}}
+                </div>
 
-
-        <div class="input-group mb-1">
-        <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
-        <input type="text" name="skills" value="{{ user.skills }}" class="form-control {{#if errors.skills }}is-invalid{{/if}}" placeholder="url skills">
-        {{#if errors.skills}}<div class="invalid-feedback">{{ errors.skills }}</div>{{/if}}
-      </div>
+                <label for="basic-url" class="form-label">Networing:</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon3">https://instagram.com/</span>
+                  <input type="text" name="social" value="{{ user.social }}" class="form-control {{#if errors.social }}is-invalid{{/if}}" placeholder="URL">
+                        {{#if errors.social}}<div class="invalid-feedback">{{ errors.social }}</div>{{/if}}
+                </div>
 
 
-      <div class="input-group mb-1">
-        <span class="input-group-text"><i class="fa fa-lock fa-fw"></i></span>
-        <input type="password" name="password" class="form-control {{#if errors.password }}is-invalid{{/if}}" placeholder="User password">
-        {{#if errors.password}}<div class="invalid-feedback">{{ errors.password }}</div>{{/if}}
+                <div class="input-group mb-3">
+                  <input type="password" name="password" class="form-control {{#if errors.password }}is-invalid{{/if}}" placeholder="****************">
+                        {{#if errors.password}}<div class="invalid-feedback">{{ errors.password }}</div>{{/if}}
+                  <span class="input-group-text" id="basic-addon2">Password</span>
+                </div>
+
+
+                <div class="input-group">
+                  <span class="input-group-text">Biography</span> 
+                  <input type="text" name="bio" value="{{ user.bio }}" class="form-control {{#if errors.bio }}is-invalid{{/if}}" placeholder="Description...">
+                        {{#if errors.bio}}<div class="invalid-feedback">{{ errors.bio }}</div>{{/if}}
+                      
+                </div>
+                  <br>
+                  <br>
+                <div class="d-grid">
+                      <button class="btn btn-primary" type="submit">Register</button>
+                </div>
+
+            </form>
+                <hr>
+                <div class="d-grid">
+                      <a class="btn btn-secondary" href="/login">Login</a>
+                </div>
+
+          </label>
+
+
       </div>
-    
-      <div class="d-grid">
-        <button class="btn btn-primary" type="submit">Register</button>
-      </div>
-    </form>
-    <hr>
-    <div class="d-grid">
-      <a class="btn btn-secondary" href="/login">Login</a>
     </div>
-  </div>
-</div>
