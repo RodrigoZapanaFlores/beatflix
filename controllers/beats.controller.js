@@ -57,8 +57,9 @@ module.exports.create = (req, res, next) => {
     ...req.body,
     author: req.user.id,
   };
-
+  console.log(req.file.path);
   beat.audio = req.file.path;
+  
 
   Beat.create(beat)
     .then((beat) => res.redirect('/beats'))
