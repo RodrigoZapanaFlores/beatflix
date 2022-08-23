@@ -1,16 +1,26 @@
-<h1>Description</h1>
+<section class="about">
+   <div class="main">
 
-<p>Nombre del Beat: {{beat.title}}</p>
-<p>Velocidad: {{beat.bpms}}</p>
-<p>Machine: {{beat.machine}}</p>
-<div>
-<p>Process of production:</p>
-<iframe width="560" height="315" src="{{beat.url}}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="{{beat.url}}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+     <div class="about-text">
+        <h3>Process of production:</h3>
 
-</div>
+          <h5>Nombre del Beat: {{beat.title}}</h5>
+          <h5>Velocidad: {{beat.bpms}}</h5>
+          <h5>Machine: {{beat.machine}}</h5>
+    
+        <div class="social">
+            <a href="/beats"><i class="fa fa-undo" aria-hidden="true"></i></a></p>
+            <form action="/beats/{{beat.id}}/delete" method="post" >
+               <button type="submit" class="btn"><i class="fa fa-times-circle" aria-hidden="true"></i></i>
+               </button>
+            </form>
+        </div>
 
-<form action="/beats/{{beat.id}}/delete" method="post">
-    <button type="submit">DELETE</button>
-</form>
 
-<a href="/beats">Go to list</a>
+     </div>
+
+
+   </div>
+</section>
+

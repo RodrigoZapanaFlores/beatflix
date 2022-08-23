@@ -1,40 +1,45 @@
 
-
-<div class="newslatter">
-    <form id="formbeats" action="/beats" method="GET">
+<div class="hero">
+   <div class="newslatter">
+      <form id="formbeats" action="/beats" method="GET">
         <input type="text" name="wordToFind" value="{{ query.wordToFind }}" class="form-control"  id="searchinput" placeholder="Enter word to find...">
         <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-</div>
+      </form>
+    </div>
 
 
 
-    <div class="row">
-    {{#each beats as |beat|}}
-        <div class="col-3">
-            <div class="card mb-4">
-                 <!-- <img src="{{beat.image}}" class="card-img-top" alt="..."> -->
-                 <div class="card-body-container">
-                <div class="card-body">
-
-                    <h5 class="card-title">{{beat.title}}</h5>
-                    
+    <div class="music-container">
+            {{#each beats as |beat|}}
+            <div class="box">
+                <div class="music-description">
+                    <p class="card-text">{{beat.title}}</p>
+                </div>
+                 
+                <div class="music-description">
                     <p class="card-text">{{beat.description}}</p>
+                </div>
+
+                <div class="music-description">
                     <p class="card-text"><a href="/users/{{beat.author.id}}/userDetail">@{{beat.author.name}}</a></p>
+                </div>
+
+                <div class="music">
                     <audio controls muted >
                         <source src={{beat.audio}}>
                     </audio>  
-                 
-
+                </div>
+                
+                <div class="social">
                     {{#if ../currentUser}}
-                    <a href="/beats/{{beat.id}}/detail" class="btn btn-primary">&#127911 See detail</a>
+                    <a href="/beats/{{beat.id}}/detail" ><i class="fa fa-info" aria-hidden="true"></i></a>
                     <form action="/beats/{{beat.id}}/delete" method="post">
-                    <button class="btn btn-secondary" type="submit">&#128162    Borrar</button>
-                     </form>
+                      <button class="btn" type="submit"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+                    </form>
                     {{/if}}
-                    
-                </div> </div>
+                </div> 
             </div>
-        </div>
-    {{/each}}
+            {{/each}}
     </div>
+
+</div>    
